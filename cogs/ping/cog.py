@@ -1,6 +1,7 @@
 from nextcord.ext import commands
+import nextcord
 
-class Ping(commands.Cog, name="Ping"):
+class PingDylan(commands.Cog, name="PingDylan"):
     """Receives ping commands"""
 
     COG_EMOJI = "🏓"
@@ -9,9 +10,9 @@ class Ping(commands.Cog, name="Ping"):
         self._bot = bot
 
     @commands.command(hidden=True)
-    async def ping(self, ctx: commands.Context, ):
+    async def pingDylan(self, ctx: commands.Context, member: nextcord.Member ):
         """Checks for a response from the bot"""
-        await ctx.send("Pong")
+        await ctx.send(member.mention)
 
 def setup(bot: commands.Bot):
-    bot.add_cog(Ping(bot))
+    bot.add_cog(PingDylan(bot))
